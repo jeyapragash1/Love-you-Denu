@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine's Day - Home</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <button class="nav-toggle" aria-label="Open menu">
+      <span class="nav-bar"></span>
+      <span class="nav-bar"></span>
+      <span class="nav-bar"></span>
+    </button>
+    <ul class="nav-menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="love-letter.html">Love Letter</a></li>
+      <li><a href="reasons.html">Reasons</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="future.html">Future</a></li>
+      <li><a href="surprise.html">Surprise</a></li>
+    </ul>
+  </nav>
+  <main id="home">
+    <div class="hero-bg">
+      <!-- Animated background will be handled in JS/CSS -->
+    </div>
+    <section class="hero">
+      <h1 class="fade-in">Happy Valentine’s Day, <span id="her-name">Pattumma</span></h1>
+      <h2 class="slide-in">A little digital world just for Pattu & Pattumma</h2>
+      <div class="main-images">
+        <div class="main-image-card">
+          <img src="images/img 1.png" alt="Our future son" class="main-image" id="son-img">
+          <div class="main-image-caption">Our future son<br><span class="main-image-desc">A dream we cherish together</span></div>
+        </div>
+        <div class="main-image-card">
+          <img src="images/img 2.png" alt="Our future daughter" class="main-image" id="daughter-img">
+          <div class="main-image-caption">Our future daughter<br><span class="main-image-desc">A vision of our love</span></div>
+        </div>
+      </div>
+      <button id="open-surprise" class="scale-in">Open Your Surprise</button>
+      <div class="options fade-in">
+        <button id="music-toggle">🎵 Music</button>
+      </div>
+      <div id="password-modal" class="modal hidden">
+        <div class="modal-content">
+          <h3>Enter Passcode</h3>
+          <input type="password" id="passcode-input" placeholder="Passcode">
+          <button id="passcode-submit">Enter</button>
+        </div>
+      </div>
+      <div id="image-popup" class="modal hidden">
+        <div class="modal-content popup-content">
+          <span id="popup-close" class="popup-close">&times;</span>
+          <h3 id="popup-title"></h3>
+          <p id="popup-msg"></p>
+        </div>
+      </div>
+    </section>
+    <section class="future-family dreamy-bg fade-in">
+      <div class="carousel-container">
+        <div class="carousel-slide active" id="slide-son">
+          <img src="images/img 1.png" alt="Our future son" class="carousel-img">
+          <div class="carousel-caption">Our future son<br><span class="carousel-desc">A dream we cherish together</span></div>
+        </div>
+        <div class="carousel-slide" id="slide-daughter">
+          <img src="images/img 2.png" alt="Our future daughter" class="carousel-img">
+          <div class="carousel-caption">Our future daughter<br><span class="carousel-desc">A vision of our love</span></div>
+        </div>
+        <button class="carousel-btn" id="carousel-prev">&#8592;</button>
+        <button class="carousel-btn" id="carousel-next">&#8594;</button>
+      </div>
+    </section>
+    <script>
+      // Simple carousel for future family images
+      const slides = document.querySelectorAll('.carousel-slide');
+      const prevBtn = document.getElementById('carousel-prev');
+      const nextBtn = document.getElementById('carousel-next');
+      let current = 0;
+      function showSlide(idx) {
+        slides.forEach((s, i) => s.classList.toggle('active', i === idx));
+      }
+      prevBtn.addEventListener('click', () => {
+        current = (current - 1 + slides.length) % slides.length;
+        showSlide(current);
+      });
+      nextBtn.addEventListener('click', () => {
+        current = (current + 1) % slides.length;
+        showSlide(current);
+      });
+      // Auto-slide every 6 seconds
+      setInterval(() => {
+        current = (current + 1) % slides.length;
+        showSlide(current);
+      }, 6000);
+    </script>
+  </main>
+  <script src="script.js"></script>
+  <script>
+    // Hamburger menu toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    navToggle.addEventListener('click', function() {
+      navMenu.classList.toggle('nav-open');
+      navToggle.classList.toggle('open');
+    });
+
+    // Image popup logic
+    const sonImg = document.getElementById('son-img');
+    const daughterImg = document.getElementById('daughter-img');
+    const popup = document.getElementById('image-popup');
+    const popupTitle = document.getElementById('popup-title');
+    const popupMsg = document.getElementById('popup-msg');
+    const popupClose = document.getElementById('popup-close');
+    sonImg.addEventListener('click', function() {
+      popupTitle.textContent = 'Our Future Prince';
+      popupMsg.textContent = 'This is our future prince, a dream we cherish together.';
+      popup.classList.remove('hidden');
+    });
+    daughterImg.addEventListener('click', function() {
+      popupTitle.textContent = 'Our Future Princess';
+      popupMsg.textContent = 'This is our future princess, a vision of our love.';
+      popup.classList.remove('hidden');
+    });
+    popupClose.addEventListener('click', function() {
+      popup.classList.add('hidden');
+    });
+    // Close popup on outside click
+    popup.addEventListener('click', function(e) {
+      if (e.target === popup) popup.classList.add('hidden');
+    });
+  </script>
+  <script>
+    // Hamburger menu toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    navToggle.addEventListener('click', function() {
+      navMenu.classList.toggle('nav-open');
+      navToggle.classList.toggle('open');
+    });
+  </script>
+</body>
+</html>
