@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Memories Gallery</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="love-letter.html">Love Letter</a></li>
+      <li><a href="reasons.html">Reasons</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="future.html">Future</a></li>
+      <li><a href="surprise.html">Surprise</a></li>
+    </ul>
+  </nav>
+  <main id="gallery">
+    <section class="gallery-section">
+      <h1 class="fade-in">Our Memories Together</h1>
+      <button id="random-memory" class="scale-in">Random Memory</button>
+      <div class="gallery-grid fade-in" id="gallery-grid">
+        <!-- Images will be loaded by JS -->
+      </div>
+    </section>
+    <div id="lightbox" class="lightbox hidden">
+      <div class="lightbox-content">
+        <img id="lightbox-img" src="" alt="Memory">
+        <div id="lightbox-caption"></div>
+        <button id="close-lightbox">Close</button>
+      </div>
+    </div>
+  </main>
+  <script src="gallery.js"></script>
+</body>
+</html>
